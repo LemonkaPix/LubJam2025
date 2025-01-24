@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float shootForce = 10f; // Siła wystrzału
-    private Rigidbody rb;
+    public float maxShootForce = 20f; // Maksymalna siła wystrzału
+    public float chargeRate = 10f;   // Prędkość ładowania (siła na sekundę)
+    [SerializeField] private float currentCharge = 0f; // Aktualna naładowana siła
 
+    private Rigidbody rb;
     private bool isStationary = true; // Czy kula jest nieruchoma?
+    private bool isCharging = false; // Czy trwa ładowanie strzału?
 
     void Start()
     {
@@ -16,13 +19,29 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-        // Tryb celowania
-        Aim();
         if (isStationary)
         {
-            if (Input.GetMouseButtonDown(0)) // Strzał lewym przyciskiem myszy
+            Aim();
+
+            // Rozpocznij ładowanie strzału
+            if (Input.GetMouseButtonDown(0))
+            {
+                isCharging = true;
+                currentCharge = 0f; // Reset ładunku
+            }
+
+            // Kontynuuj ładowanie strzału
+            if (Input.GetMouseButton(0) && isCharging)
+            {
+                currentCharge += chargeRate * Time.deltaTime;
+                currentCharge = Mathf.Clamp(currentCharge, 0f, maxShootForce); // Ogranicz do maksymalnej siły
+            }
+
+            // Wykonaj strzał
+            if (Input.GetMouseButtonUp(0) && isCharging)
             {
                 Shoot();
+                isCharging = false; // Zakończ ładowanie
             }
         }
         else
@@ -51,6 +70,6 @@ public class BallController : MonoBehaviour
     {
         isStationary = false;
         rb.isKinematic = false;
-        rb.AddForce(transform.forward * shootForce, ForceMode.Impulse);
+        rb.AddForce(transform.forward * currentCharge, ForceMode.Impulse); // Użycie załadowanej siły
     }
 }
