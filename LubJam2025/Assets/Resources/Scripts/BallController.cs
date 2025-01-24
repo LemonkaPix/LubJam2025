@@ -11,6 +11,9 @@ public class BallController : MonoBehaviour
     private bool isStationary = true; // Czy kula jest nieruchoma?
     private bool isCharging = false; // Czy trwa ładowanie strzału?
 
+    [SerializeField] private Camera fpsCam;
+    [SerializeField] private Camera thrdCam;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -23,6 +26,8 @@ public class BallController : MonoBehaviour
         Aim();
         if (isStationary)
         {
+            fpsCam.enabled = true;
+            thrdCam.enabled = false;
             if (rb.velocity.magnitude >= minimalSpeed) // Minimalna prędkość
             {
                 isStationary = false;
@@ -49,6 +54,8 @@ public class BallController : MonoBehaviour
         }
         else
         {
+            fpsCam.enabled = false;
+            thrdCam.enabled = true;
             print(rb.velocity);
             if (rb.velocity.magnitude < minimalSpeed) // Minimalna prędkość
             {
