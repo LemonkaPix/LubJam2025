@@ -3,7 +3,8 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public float maxShootForce = 20f; // Maksymalna siła wystrzału
-    public float chargeRate = 10f;   // Prędkość ładowania (siła na sekundę)
+    public float chargeRate = 10f; // Prędkość ładowania (siła na sekundę)
+    public float minimalSpeed = .1f; // Prędkość ładowania (siła na sekundę)
     [SerializeField] private float currentCharge = 0f; // Aktualna naładowana siła
 
     private Rigidbody rb;
@@ -19,25 +20,27 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
+        Aim();
         if (isStationary)
         {
-            Aim();
-
-            // Rozpocznij ładowanie strzału
+            if (rb.velocity.magnitude >= minimalSpeed) // Minimalna prędkość
+            {
+                isStationary = false;
+                return;
+            }
+            
             if (Input.GetMouseButtonDown(0))
             {
                 isCharging = true;
                 currentCharge = 0f; // Reset ładunku
             }
 
-            // Kontynuuj ładowanie strzału
             if (Input.GetMouseButton(0) && isCharging)
             {
                 currentCharge += chargeRate * Time.deltaTime;
                 currentCharge = Mathf.Clamp(currentCharge, 0f, maxShootForce); // Ogranicz do maksymalnej siły
             }
 
-            // Wykonaj strzał
             if (Input.GetMouseButtonUp(0) && isCharging)
             {
                 Shoot();
@@ -46,8 +49,8 @@ public class BallController : MonoBehaviour
         }
         else
         {
-            // Sprawdzanie, czy kula się zatrzymała
-            if (rb.velocity.magnitude < 0.1f) // Minimalna prędkość
+            print(rb.velocity);
+            if (rb.velocity.magnitude < minimalSpeed) // Minimalna prędkość
             {
                 rb.velocity = Vector3.zero;
                 isStationary = true;
@@ -57,11 +60,9 @@ public class BallController : MonoBehaviour
 
     void Aim()
     {
-        // Rotacja horyzontalna wokół globalnej osi Y
         float horizontal = Input.GetAxis("Mouse X") * 5f;
         transform.Rotate(0, horizontal, 0, Space.World); // Rotacja wokół globalnej osi Y
 
-        // Rotacja wertykalna wokół lokalnej osi X
         float vertical = -Input.GetAxis("Mouse Y") * 5f;
         transform.Rotate(vertical, 0, 0, Space.Self); // Rotacja wokół lokalnej osi X
     }

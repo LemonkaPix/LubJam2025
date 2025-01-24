@@ -147,7 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384593cfb13241939cfe618449c6df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootForce: 10
+  maxShootForce: 20
+  chargeRate: 20
+  currentCharge: 0
 --- !u!1 &7353101655410925100
 GameObject:
   m_ObjectHideFlags: 0
