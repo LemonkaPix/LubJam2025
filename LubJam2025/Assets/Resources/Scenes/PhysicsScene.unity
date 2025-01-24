@@ -332,12 +332,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: -45, z: 0}
---- !u!20 &194106195 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 984624385035591665, guid: 849faa43e327f4c89ae6a47213abce52,
-    type: 3}
-  m_PrefabInstance: {fileID: 7438659897834858583}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &396654549
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,12 +542,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!20 &504367884 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3975181974059875718, guid: 849faa43e327f4c89ae6a47213abce52,
-    type: 3}
-  m_PrefabInstance: {fileID: 7438659897834858583}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &839464880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,16 +1513,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7330585515172101929, guid: 849faa43e327f4c89ae6a47213abce52,
-        type: 3}
-      propertyPath: fpsCam
-      value: 
-      objectReference: {fileID: 194106195}
-    - target: {fileID: 7330585515172101929, guid: 849faa43e327f4c89ae6a47213abce52,
-        type: 3}
-      propertyPath: thrdCam
-      value: 
-      objectReference: {fileID: 504367884}
     - target: {fileID: 8395777404296144006, guid: 849faa43e327f4c89ae6a47213abce52,
         type: 3}
       propertyPath: m_LocalPosition.x
