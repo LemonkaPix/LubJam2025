@@ -16,6 +16,8 @@ public class BallController : MonoBehaviour
     [SerializeField] private Camera thrdCam;
 
     [SerializeField] private Slider _slider;
+    [SerializeField] private ParticleSystem jumpParticle;
+    public ParticleSystem stickParticle;
 
     void Start()
     {
@@ -96,6 +98,7 @@ public class BallController : MonoBehaviour
     void Shoot()
     {
         // print("Shoot");
+        jumpParticle.Play();
         rb.useGravity = true;
         isStationary = false;
         rb.isKinematic = false;

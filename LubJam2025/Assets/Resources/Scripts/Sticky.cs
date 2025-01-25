@@ -12,7 +12,7 @@ public class Sticky : MonoBehaviour
             var rb = collision.gameObject.GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
-
+            collision.gameObject.GetComponent<BallController>().stickParticle.Play();
         }
     }
 }
