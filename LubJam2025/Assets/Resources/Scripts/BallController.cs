@@ -64,7 +64,7 @@ public class BallController : MonoBehaviour
         {
             fpsCam.transform.gameObject.SetActive(false);
             thrdCam.transform.gameObject.SetActive(true);
-            print(rb.velocity);
+            // print(rb.velocity);
             if (rb.velocity.magnitude < minimalSpeed) // Minimalna prędkość
             {
                 rb.velocity = Vector3.zero;
