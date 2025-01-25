@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour
     public float minimalSpeed = .1f; // Prędkość ładowania (siła na sekundę)
     [SerializeField] private float currentCharge = 0f; // Aktualna naładowana siła
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private bool isStationary = true; // Czy kula jest nieruchoma?
     private bool isCharging = false; // Czy trwa ładowanie strzału?
 
@@ -54,6 +54,8 @@ public class BallController : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && isCharging)
             {
                 Shoot();
+                rb.useGravity = true;
+
                 isCharging = false; // Zakończ ładowanie
                 currentCharge = 0;
                 _slider.value = currentCharge;
@@ -67,10 +69,19 @@ public class BallController : MonoBehaviour
             // print(rb.velocity);
             if (rb.velocity.magnitude < minimalSpeed) // Minimalna prędkość
             {
-                rb.velocity = Vector3.zero;
-                isStationary = true;
+                Stationary();
+            }
+            else
+            {
+                rb.useGravity = true;
             }
         }
+    }
+
+    public void Stationary()
+    {
+        rb.velocity = Vector3.zero;
+        isStationary = true;
     }
 
     void Aim()
@@ -84,6 +95,8 @@ public class BallController : MonoBehaviour
 
     void Shoot()
     {
+        // print("Shoot");
+        rb.useGravity = true;
         isStationary = false;
         rb.isKinematic = false;
         rb.AddForce(transform.forward * currentCharge, ForceMode.Impulse); // Użycie załadowanej siły
