@@ -19,7 +19,6 @@ public class CreditScript : MonoBehaviour
     }
     public void ResetTextPos()
     {
-        Debug.Log(-(Screen.height));
-        rectTransform.anchoredPosition = new Vector2(0, -(Screen.height));
+        rectTransform.anchoredPosition = new Vector2(0, -826);
     }
 }

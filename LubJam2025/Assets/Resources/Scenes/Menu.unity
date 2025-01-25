@@ -754,8 +754,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1098}
-  m_SizeDelta: {x: 812.94995, y: 1100}
+  m_AnchoredPosition: {x: 0, y: -826}
+  m_SizeDelta: {x: 812.94995, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197891798
 MonoBehaviour:
@@ -804,34 +804,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'gdgdhgfhddh
-
-    fghddghdh
-
-    dhghdghfdghfdgh
-
-
-    hgfdhgdhfgddfghd
-
-    fdghdgfd
-
-    hdfghfgdfdgh
-
-    fghdgddf
-
-    hfgdg
-
-    hdfghdgfg
-
-    hgfh
-
-    gfh
-
-    fghdfgdfg
-
-    h
-
-    fdhfdghdfhfh'
+  m_text: "Developers:\nKrzysztof Kr\xF3wka (Game Designer)\nKacper Pli\u015B (Audio/Music)\nKacper
+    Sroczyk (Level Designer)\nMaciej Wr\xF3bel (Programming)\nDawid Piechowski (Programming)\nWojciech
+    Turczyn (3D Artist)\n\nPowered by Unity\n\nThank you for playing!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1977,10 +1952,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 3109465020130897810, guid: b34e6a70da57c114f9ccdbcf269fab67,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313352865206447748, guid: b34e6a70da57c114f9ccdbcf269fab67,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5550640158588318999, guid: b34e6a70da57c114f9ccdbcf269fab67,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5550640158588318999, guid: b34e6a70da57c114f9ccdbcf269fab67,
         type: 3}
