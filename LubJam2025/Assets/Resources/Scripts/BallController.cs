@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class BallController : MonoBehaviour
     [SerializeField] private Camera fpsCam;
     [SerializeField] private Camera thrdCam;
 
+    [SerializeField] private Slider _slider;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
+        _slider.maxValue = maxShootForce;
     }
 
     void Update()
@@ -26,8 +30,8 @@ public class BallController : MonoBehaviour
         Aim();
         if (isStationary)
         {
-            fpsCam.enabled = true;
-            thrdCam.enabled = false;
+            fpsCam.transform.gameObject.SetActive(true);
+            thrdCam.transform.gameObject.SetActive(false);
             if (rb.velocity.magnitude >= minimalSpeed) // Minimalna prędkość
             {
                 isStationary = false;
@@ -44,18 +48,22 @@ public class BallController : MonoBehaviour
             {
                 currentCharge += chargeRate * Time.deltaTime;
                 currentCharge = Mathf.Clamp(currentCharge, 0f, maxShootForce); // Ogranicz do maksymalnej siły
+                _slider.value = currentCharge;
             }
 
             if (Input.GetMouseButtonUp(0) && isCharging)
             {
                 Shoot();
                 isCharging = false; // Zakończ ładowanie
+                currentCharge = 0;
+                _slider.value = currentCharge;
+
             }
         }
         else
         {
-            fpsCam.enabled = false;
-            thrdCam.enabled = true;
+            fpsCam.transform.gameObject.SetActive(false);
+            thrdCam.transform.gameObject.SetActive(true);
             print(rb.velocity);
             if (rb.velocity.magnitude < minimalSpeed) // Minimalna prędkość
             {
