@@ -11,7 +11,7 @@ public class JumpPad : MonoBehaviour
         {
             var rb = collision.gameObject.GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
-            rb.AddForce(transform.up * Power, ForceMode.Impulse);
+            rb.AddForce(transform.forward * Power, ForceMode.Impulse);
 
         }
     }
