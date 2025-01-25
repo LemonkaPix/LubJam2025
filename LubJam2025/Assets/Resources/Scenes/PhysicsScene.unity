@@ -3009,6 +3009,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1226243104974004773, guid: 5bd6de8bcb2c04340853119b3bd09e6b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae9adce6bf7651c468e2e5f406501d88, type: 2}
     - target: {fileID: 2537553867956252655, guid: 5bd6de8bcb2c04340853119b3bd09e6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3059,11 +3064,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3230231287164918080, guid: 5bd6de8bcb2c04340853119b3bd09e6b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae9adce6bf7651c468e2e5f406501d88, type: 2}
     - target: {fileID: 5287432201625036206, guid: 5bd6de8bcb2c04340853119b3bd09e6b,
         type: 3}
       propertyPath: m_Name
       value: 'Dark 1 '
       objectReference: {fileID: 0}
+    - target: {fileID: 7085865189754753978, guid: 5bd6de8bcb2c04340853119b3bd09e6b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae9adce6bf7651c468e2e5f406501d88, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
