@@ -6,6 +6,8 @@ public class CreditScript : MonoBehaviour
 {
     public float scrollSpeed = 40f;
     private RectTransform rectTransform;
+
+    public GameObject title;
     // Start is called before the first frame update
     void Start()
     {
