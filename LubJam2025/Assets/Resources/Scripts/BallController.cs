@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
+    public static BallController instance;
     public float maxShootForce = 20f; // Maksymalna siła wystrzału
     public float chargeRate = 10f; // Prędkość ładowania (siła na sekundę)
     public float minimalSpeed = .1f; // Prędkość ładowania (siła na sekundę)
@@ -18,6 +20,11 @@ public class BallController : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private ParticleSystem jumpParticle;
     public ParticleSystem stickParticle;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
 
     void Start()
     {
