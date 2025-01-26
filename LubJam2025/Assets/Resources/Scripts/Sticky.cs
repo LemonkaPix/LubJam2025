@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Managers.Sounds;
 using UnityEngine;
 
 public class Sticky : MonoBehaviour
@@ -13,6 +14,9 @@ public class Sticky : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
             collision.gameObject.GetComponent<BallController>().stickParticle.Play();
+            var sm = SoundManager.Instance;
+            sm.PlayOneShoot(sm.PlayerSource, sm.MusicCollection.clips[2]);
+
         }
     }
 }
