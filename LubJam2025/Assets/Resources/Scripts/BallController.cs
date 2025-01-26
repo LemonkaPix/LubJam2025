@@ -1,4 +1,5 @@
 using System;
+using Managers.Sounds;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private ParticleSystem jumpParticle;
     public ParticleSystem stickParticle;
-
+    private SoundManager sm;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -32,6 +33,8 @@ public class BallController : MonoBehaviour
         Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
         _slider.maxValue = maxShootForce;
+        sm = SoundManager.Instance;
+
     }
 
     void Update()
@@ -105,6 +108,7 @@ public class BallController : MonoBehaviour
     void Shoot()
     {
         // print("Shoot");
+        sm.PlayOneShoot(sm.PlayerSource, sm.MusicCollection.clips[3]);
         jumpParticle.Play();
         rb.useGravity = true;
         isStationary = false;
