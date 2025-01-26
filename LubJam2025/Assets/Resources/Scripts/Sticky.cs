@@ -7,6 +7,7 @@ public class Sticky : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision)
     {
+        bool oldGravity = true; 
         if (collision.gameObject.CompareTag("Player"))
         {
             // print("Collide with player!");
@@ -14,9 +15,8 @@ public class Sticky : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
             collision.gameObject.GetComponent<BallController>().stickParticle.Play();
-            var sm = SoundManager.Instance;
-            sm.PlayOneShoot(sm.PlayerSource, sm.MusicCollection.clips[2]);
 
         }
     }
+    
 }
